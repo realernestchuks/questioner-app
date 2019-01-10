@@ -10,6 +10,7 @@ router.get('/api/v1/meetups', meetupController.getAllMeetups);
 router.get('/api/v1/meetups/:id', meetupController.getOneMeetup);
 =======
 >>>>>>> ft-get-all-meetups-endpoint-163074304
+router.put('/api/v1/meetups/:id', meetupController.updateMeetup);
 
 
 export default router;
