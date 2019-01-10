@@ -1,6 +1,31 @@
 import meetupdb from '../models/meetupdb';
 
-class MeetupsController { 
+class MeetupsController {
+  getAllMeetups(req, res) {
+    return res.status(200).send({
+      success: 'true',
+      message: 'meetup retrieved successfully',
+      meetup: meetupdb,
+    });
+  }
+
+  getOneMeetup(req, res) {
+    const id = parseInt(req.params.id, 10);
+    meetupdb.map((meetup) => {
+      if (meetup.id === id) {
+        return res.status(200).send({
+          success: 'true',
+          message: 'meetup retrieved successfully',
+          meetup,
+        });
+      }
+    });
+    return res.status(404).send({
+      success: 'false',
+      message: 'meetup does not exist',
+    });
+  }
+
   createMeetup(req, res) {
     if (!req.body.title) {
       return res.status(400).send({
@@ -30,36 +55,11 @@ class MeetupsController {
       happeningOn: req.body.happeningOn,
       location: req.body.location
     };
-    meetupdb.push(meetup);
+    meetupdb.push(neetup);
     return res.status(201).send({
       success: 'true',
       message: 'meetup added successfully',
       meetup,
-    });
-  }
-
-  getAllMeetups(req, res) {
-    return res.status(200).send({
-      success: 'true',
-      message: 'meetup retrieved successfully',
-      meetup: meetupdb,
-    });
-  }
-
-   getOneMeetup(req, res) {
-    const id = parseInt(req.params.id, 10);
-    meetupdb.map((meetup) => {
-      if (meetup.id === id) {
-        return res.status(200).send({
-          success: 'true',
-          message: 'meetup retrieved successfully',
-          meetup,
-        });
-      }
-    });
-    return res.status(404).send({
-      success: 'false',
-      message: 'meetup does not exist',
     });
   }
 
@@ -119,9 +119,32 @@ class MeetupsController {
       newMeetup,
     });
   }
-  
-}
 
+  deleteMeetup(req, res) {
+    const id = parseInt(req.params.id, 10);
+    let meetupFound;
+    let itemIndex;
+    meetupdb.map((meetup, index) => {
+      if (meetup.id === id) {
+        meetupFound = meetup;
+        itemIndex = index;
+      }
+    });  
+
+    if (!meetupFound) {
+      return res.status(404).send({
+        success: 'false',
+        message: 'meetup not found',
+      });
+    }
+    meetupdb.splice(itemIndex, 1);
+
+    return res.status(200).send({
+      success: 'true',
+      message: 'meetup deleted successfuly',
+    });
+  }
+} 
 
 const meetupController = new MeetupsController();
 export default meetupController;
