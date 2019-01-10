@@ -37,6 +37,15 @@ class MeetupsController {
       meetup,
     });
   }
+
+  getAllMeetups(req, res) {
+    return res.status(200).send({
+      success: 'true',
+      message: 'meetups retrieved successfully',
+      meetup: meetupdb,
+    });
+  }
+
 }
 
 const meetupController = new MeetupsController();
