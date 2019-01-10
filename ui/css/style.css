@@ -344,14 +344,14 @@ body {
 	grid-template-columns: 1fr 1fr;
 }
 
-.brand {
+.brand, .brand-name {
 	display: grid;
 	text-align: left;
 	margin-left: 5%;
 	font-size: 4rem;
 	font-family: Lobster;
 	color: var(--color-primary);
-	cursor: pointer;
+	cursor: pointer; 
 }
 
 .branding ul {
@@ -417,7 +417,6 @@ body {
 	align-items: center;
 	background-image: linear-gradient(rgba(114, 81, 31, .5), rgba(114, 81, 31, .5)), url(../img/back.jpg);
 	background-opacity: .3;
-	margin: 5% 0 5% 5%;
 }
 
 .story-img-1 {
@@ -443,7 +442,6 @@ body {
 	display: grid;
 	justify-items: start;
 	align-content: center;
-	margin: 5% 5% 5% 0;
 }
 
 .story-text {
@@ -607,6 +605,10 @@ body {
 	justify-items: center;
 	background-color: var(--color-grey-light-1);
 	box-shadow: 0 1rem 2rem rgba(0,0,0, .2);
+}
+
+.login-btn {
+	text-decoration: none;
 }
 
 .login-form, .signup-form {
