@@ -4,13 +4,12 @@ import meetupController from '../controllers/meetup';
 
 const router = express.Router();
 
-router.post('/api/v1/meetups', meetupController.createMeetup);
 router.get('/api/v1/meetups', meetupController.getAllMeetups);
-<<<<<<< HEAD
 router.get('/api/v1/meetups/:id', meetupController.getOneMeetup);
-=======
->>>>>>> ft-get-all-meetups-endpoint-163074304
+router.post('/api/v1/meetups', meetupController.createMeetup);
 router.put('/api/v1/meetups/:id', meetupController.updateMeetup);
+router.delete('/api/v1/meetups/:id', meetupController.deleteMeetup);
+
 
 
 export default router;
