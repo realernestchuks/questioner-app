@@ -41,6 +41,7 @@ class MeetupsController {
   getAllMeetups(req, res) {
     return res.status(200).send({
       success: 'true',
+<<<<<<< HEAD
       message: 'meetup retrieved successfully',
       meetup: db,
     });
@@ -63,6 +64,13 @@ class MeetupsController {
     });
   }
   
+=======
+      message: 'meetups retrieved successfully',
+      meetup: meetupdb,
+    });
+  }
+
+>>>>>>> ft-get-all-meetups-endpoint-163074304
 }
 
 
