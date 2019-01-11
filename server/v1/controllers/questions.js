@@ -25,6 +25,46 @@ class QuestionsController {
       message: 'question does not exist',
     });
   }
+
+  createQuestion(req, res) {
+    if (!req.body.title) {
+      return res.status(400).send({
+        success: 'false',
+        message: 'title is required',
+      });
+    } else if (!req.body.body) {
+      return res.status(400).send({
+        success: 'false',
+        message: 'body is required',
+      });
+    } else if(!req.body.createdOn) {
+  	return res.status(400).send({
+  		success: 'false',
+  		message: 'Date is required'
+  	})
+  } else if(!req.body.createdBy) {
+  	return res.status(400).send({
+  		success: 'false',
+  		message: 'question creator is required'
+  	})
+  } 
+
+    const question = {
+      id: questionsdb.length + 1,
+      title: req.body.title,
+      body: req.body.body,
+      createdOn: req.body.createdOn,
+      createdBy: req.body.createdBy,
+      votes: 0
+    };
+    
+    questionsdb.push(question);
+    return res.status(201).send({
+      success: 'true',
+      message: 'question added successfully',
+      question,
+    });
+  }
 }
 
 const questionsController = new QuestionsController();
