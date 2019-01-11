@@ -1,13 +1,15 @@
 import express from 'express';
 import meetupdb from './v1/models/meetupdb';
 import bodyParser from 'body-parser';
-import router from './v1/routes/meetup';
+import meetupRouter from './v1/routes/meetup';
+import questionRouter from './v1/routes/questions';
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(router);
+app.use(meetupRouter);
+app.use(questionRouter);
 
 //App root
 app.get('/', (req, res) => {
