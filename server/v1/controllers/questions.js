@@ -1,4 +1,5 @@
 import questionsdb from '../models/questionsdb';
+import validateQuestion from "../validations/questions";
 
 class QuestionsController {
 	getAllQuestions(req, res) {
