@@ -8,7 +8,7 @@ class MeetupsController {
       meetup: meetupdb,
     });
   }
-
+ 
   getOneMeetup(req, res) {
     const id = parseInt(req.params.id, 10);
     meetupdb.map((meetup) => {
