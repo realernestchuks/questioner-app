@@ -1,10 +1,11 @@
-import meetupdb from '../models/meetupdb';
+import meetupdb from "../models/meetupdb";
+import validateMeetup from "../validations/meetups";
 
 class MeetupsController {
   getAllMeetups(req, res) {
     return res.status(200).send({
-      success: 'true',
-      message: 'meetups retrieved successfully',
+      success: "true",
+      message: "meetups retrieved successfully",
       meetup: meetupdb,
     });
   } 
@@ -14,38 +15,38 @@ class MeetupsController {
     meetupdb.map((meetup) => {
       if (meetup.id === id) {
         return res.status(200).send({
-          success: 'true',
-          message: 'meetup retrieved successfully',
+          success: "true",
+          message: "meetup retrieved successfully",
           meetup,
         });
       }
     });
     return res.status(404).send({
-      success: 'false',
-      message: 'meetup does not exist',
+      success: "false",
+      message: "meetup does not exist",
     });
   }
 
   createMeetup(req, res) {
     if (!req.body.title) {
       return res.status(400).send({
-        success: 'false',
-        message: 'title is required',
+        success: "false",
+        message: "title is required",
       });
     } else if (!req.body.description) {
       return res.status(400).send({
-        success: 'false',
-        message: 'description is required',
+        success: "false",
+        message: "description is required",
       });
     } else if(!req.body.happeningOn) {
   	return res.status(400).send({
-  		success: 'false',
-  		message: 'Date is required'
+  		success: "false",
+  		message: "Date is required"
   	})
   } else if(!req.body.location) {
   	return res.status(400).send({
-  		success: 'false',
-  		message: 'loction is required'
+  		success: "false",
+  		message: "loction is required"
   	})
   }
     const meetup = {
@@ -57,8 +58,8 @@ class MeetupsController {
     };
     meetupdb.push(meetup);
     return res.status(201).send({
-      success: 'true',
-      message: 'meetup added successfully',
+      success: "true",
+      message: "meetup added successfully",
       meetup,
     });
   }
@@ -76,30 +77,30 @@ class MeetupsController {
 
     if (!meetupFound) {
       return res.status(404).send({
-        success: 'false',
-        message: 'meetup not found',
+        success: "false",
+        message: "meetup not found",
       });
     }
 
     if (!req.body.title) {
       return res.status(400).send({
-        success: 'false',
-        message: 'title is required',
+        success: "false",
+        message: "title is required",
       });
     } else if (!req.body.description) {
       return res.status(400).send({
-        success: 'false',
-        message: 'description is required',
+        success: "false",
+        message: "description is required",
       });
     } else if(!req.body.happeningOn) {
   	return res.status(400).send({
-  		success: 'false',
-  		message: 'Date is required'
+  		success: "false",
+  		message: "Date is required"
   	})
   } else if(!req.body.location) {
   	return res.status(400).send({
-  		success: 'false',
-  		message: 'loction is required'
+  		success: "false",
+  		message: "loction is required"
   	})
   }
 
